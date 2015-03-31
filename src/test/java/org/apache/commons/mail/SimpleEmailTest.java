@@ -73,6 +73,39 @@ public class SimpleEmailTest extends AbstractEmailTest
 
     }
 
+    @Test
+    public void test163Send() throws EmailException, IOException {
+        Email email = new SimpleEmail();
+        email.setHostName("smtp.163.com");
+        email.setSmtpPort(465);
+        email.setAuthenticator(new DefaultAuthenticator("...@163.com", "yyy"));
+        email.setSSLOnConnect(true);
+        email.setFrom("...");
+        email.setSubject("TestMail");
+        email.setMsg("This is a test mail ... :-)");
+        email.addTo("...");
+        email.send();
+        System.out.println("xxxxxxxxxxxxxxxx");
+    }
+
+    @Test
+    public void testBSend() throws EmailException, IOException {
+        Email email = new SimpleEmail();
+        email.setHostName("...");
+        email.setSmtpPort(25);
+        email.setStartTLSEnabled(true);
+        email.setAuthenticator(new DefaultAuthenticator("xxx", "yyy"));
+        //email.setAuthentication("xxx","yyy");
+        //email.setSSLOnConnect(true);
+        email.setFrom("...");
+        email.setSubject("TestMail");
+        email.setMsg("This is a test mail ... :-)");
+        email.addTo("...");
+        email.send();
+        System.out.println("xxxxxxxxxxxxxxxx");
+    }
+
+
     /**
      * @throws EmailException when a bad address is set.
      * @throws IOException when sending fails

@@ -1264,17 +1264,14 @@ public abstract class Email
      * @throws EmailException if there was an error.
      * @since 1.0
      */
-    public void buildMimeMessage() throws EmailException
-    {
-        if (this.message != null)
-        {
+    public void buildMimeMessage() throws EmailException {
+        if (this.message != null) {
             // [EMAIL-95] we assume that an email is not reused therefore invoking
             // buildMimeMessage() more than once is illegal.
             throw new IllegalStateException("The MimeMessage is already built.");
         }
 
-        try
-        {
+        try {
             this.message = this.createMimeMessage(this.getMailSession());
 
             if (EmailUtils.isNotEmpty(this.subject))
